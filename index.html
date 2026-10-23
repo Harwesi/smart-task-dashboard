@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Task Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="app">
+      <header class="hero">
+        <div class="hero__brand">
+          <span class="logo" aria-hidden="true"></span>
+          <div>
+            <p class="eyebrow">Productivity</p>
+            <h1>Smart Task Dashboard</h1>
+          </div>
+        </div>
+        <p class="hero__subtitle">
+          Планируйте день, отмечайте приоритеты и следите за прогрессом — всё
+          сохраняется автоматически.
+        </p>
+      </header>
+
+      <section class="stats" aria-label="Статистика задач">
+        <article class="stat-card">
+          <span class="stat-card__label">Всего</span>
+          <strong class="stat-card__value" id="statTotal">0</strong>
+        </article>
+        <article class="stat-card">
+          <span class="stat-card__label">Активные</span>
+          <strong class="stat-card__value" id="statActive">0</strong>
+        </article>
+        <article class="stat-card stat-card--accent">
+          <span class="stat-card__label">Выполнено</span>
+          <strong class="stat-card__value" id="statDone">0</strong>
+        </article>
+      </section>
+
+      <section class="panel">
+        <form class="composer" id="taskForm" autocomplete="off">
+          <div class="composer__fields">
+            <label class="field field--grow">
+              <span>Новая задача</span>
+              <input
+                id="taskInput"
+                name="title"
+                type="text"
+                maxlength="160"
+                placeholder="Например: подготовить отчёт"
+                required
+              />
+            </label>
+            <label class="field">
+              <span>Приоритет</span>
+              <select id="priorityInput" name="priority">
+                <option value="high">Высокий</option>
+                <option value="medium" selected>Средний</option>
+                <option value="low">Низкий</option>
+              </select>
+            </label>
+          </div>
+          <button class="btn btn--primary" type="submit">Добавить</button>
+        </form>
+
+        <div class="toolbar">
+          <div class="filters" role="tablist" aria-label="Фильтр по статусу">
+            <button class="chip is-active" type="button" data-filter="all">
+              Все
+            </button>
+            <button class="chip" type="button" data-filter="active">
+              Активные
+            </button>
+            <button class="chip" type="button" data-filter="done">
+              Выполненные
+            </button>
+          </div>
+          <button class="btn btn--ghost" type="button" id="clearDone">
+            Очистить выполненные
+          </button>
+        </div>
+
+        <ul class="task-list" id="taskList"></ul>
+        <p class="empty" id="emptyState">Пока нет задач. Добавьте первую.</p>
+      </section>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
